@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  node-a:
+    image: lazyfrosch/pcsd
+    build: ./image
+    hostname: node-a
+    volumes:
+      - type: tmpfs
+        target: /run
+        tmpfs:
+          size: 100M
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  node-b:
+    image: lazyfrosch/pcsd
+    build: ./image
+    hostname: node-b
+    volumes:
+      - type: tmpfs
+        target: /run
+        tmpfs:
+          size: 100M
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
